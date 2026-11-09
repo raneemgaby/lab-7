@@ -1,4 +1,4 @@
-export function login(username, password) {
+export function login(username, password) { //resolves with user details on success or rejects with an Error object on invalid credentials.
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (username === 'demo@student.com' && password === 'demo123456') {

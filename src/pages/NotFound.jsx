@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function NotFound() {
+export default function NotFound() { //display error when the user navigate to a router that doesn't exist
   return (
     <div className="not-found-page">
       <h1>404 - Page Not Found</h1>

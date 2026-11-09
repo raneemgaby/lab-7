@@ -6,7 +6,7 @@ const initialState = {
   data: null,
 };
 
-function fetchReducer(state, action) {
+function fetchReducer(state, action) { //manages the state of the fecth operation
   switch (action.type) {
     case 'FETCH_INIT':
       return { loading: true, error: null, data: null };
@@ -19,7 +19,7 @@ function fetchReducer(state, action) {
   }
 }
 
-export function useFetch(fetchFn, deps = []) {
+export function useFetch(fetchFn, deps = []) { //fetches data using the provided fetch function
   const [state, dispatch] = useReducer(fetchReducer, initialState);
 
   useEffect(() => {

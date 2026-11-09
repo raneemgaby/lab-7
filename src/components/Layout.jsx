@@ -2,9 +2,8 @@ import { Outlet } from 'react-router-dom';
 import NavBar from './NavBar';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
-export default function Layout() {
+export default function Layout() { //main layout componenet that wraps around the routed pages
   const [theme, setTheme] = useLocalStorage('theme_preference', 'light');
-
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };

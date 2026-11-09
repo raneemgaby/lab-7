@@ -4,18 +4,18 @@ import { useFetch } from '../hooks/useFetch';
 import { fetchProduct } from '../api/productsApi';
 import { useCartStore } from '../store/cartStore';
 
-export default function ProductDetail() {
+export default function ProductDetail() { //dispaly details of a speicifc product
   const { id } = useParams();
   const navigate = useNavigate();
   const addItem = useCartStore((state) => state.addItem);
 
   const fetchFn = useCallback((signal) => fetchProduct(id, signal), [id]);
   const { loading, error, data: product } = useFetch(fetchFn, [id]);
-
   if (loading) {
     return <div className="loading-spinner">Loading product details...</div>;
   }
 
+//checking if the porduct exists or an error occured during fetching
   if (error || !product) {
     return (
       <div className="error-page">

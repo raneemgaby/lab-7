@@ -4,7 +4,7 @@ import { useFetch } from '../hooks/useFetch';
 import { fetchProducts } from '../api/productsApi';
 import ProductCard from '../components/ProductCard';
 
-export default function ProductList() {
+export default function ProductList() { //display the list of products with search and category filtering functionality
   const [searchParams, setSearchParams] = useSearchParams();
 
   const searchQuery = searchParams.get('q') || '';
@@ -24,7 +24,7 @@ export default function ProductList() {
     setSearchParams(newParams);
   };
 
-  const handleCategoryChange = (e) => {
+  const handleCategoryChange = (e) => { //allows users to filter products by category
     const value = e.target.value;
     const newParams = new URLSearchParams(searchParams);
     if (value) {
@@ -35,10 +35,10 @@ export default function ProductList() {
     setSearchParams(newParams);
   };
 
+//checking the loading and error states
   if (loading) {
     return <div className="loading-spinner">Loading products...</div>;
   }
-
   if (error) {
     return <div className="error-message">Error: {error}</div>;
   }
@@ -46,8 +46,8 @@ export default function ProductList() {
   const allProducts = products || [];
   const categories = Array.from(new Set(allProducts.map((p) => p.category)));
 
-  // Derived filter computation directly during render (No useEffect or local state)
-  const filteredProducts = allProducts.filter((product) => {
+
+  const filteredProducts = allProducts.filter((product) => { //Derived filter computation directly during render (No useEffect or local state)
     const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
     return matchesSearch && matchesCategory;

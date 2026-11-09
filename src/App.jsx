@@ -9,7 +9,7 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 
-export default function App() {
+export default function App() { //main application component state that sets up routing and authentocation centext for the entire application
   return (
     <AuthProvider>
       <BrowserRouter>

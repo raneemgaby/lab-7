@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-const getInitialItems = () => {
+const getInitialItems = () => { //retrieves the initial cart items from LocalStorage,returning an empty array if none found or parsing fails
   try {
     const saved = localStorage.getItem('cart_items');
     return saved ? JSON.parse(saved) : [];
@@ -10,9 +10,8 @@ const getInitialItems = () => {
   }
 };
 
-export const useCartStore = create((set) => ({
+export const useCartStore = create((set) => ({ //zustand store for managing shopping cart state
   items: getInitialItems(),
-
   addItem: (product) =>
     set((state) => {
       const existingIndex = state.items.findIndex((i) => i.id === product.id);

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../store/cartStore';
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product }) { //componneet to display individual product information and options to modify it 
   const addItem = useCartStore((state) => state.addItem);
 
   return (

@@ -3,23 +3,20 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { login } from '../api/authApi';
 import { useAuth } from '../context/AuthContext';
 
-export default function Login() {
+export default function Login() { //handling actions after usr successfully logged in
   const [username, setUsername] = useState('demo@student.com');
   const [password, setPassword] = useState('demo123456');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
   const { loginUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-
   const from = location.state?.from?.pathname || '/';
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { //handling and calling the login fucntion from the api and managing the state based on the response
     e.preventDefault();
     setLoading(true);
     setErrorMessage('');
-
     try {
       const user = await login(username, password);
       loginUser(user);
@@ -31,16 +28,14 @@ export default function Login() {
     }
   };
 
-  return (
+  return ( 
     <div className="login-page">
       <h2>Sign In</h2>
       <p className="demo-hint">
         Demo account: <code>demo@student.com</code> / <code>demo123456</code>
       </p>
-
       <form onSubmit={handleSubmit} className="login-form">
         {errorMessage && <div className="error-banner">{errorMessage}</div>}
-
         <div className="form-group">
           <label htmlFor="username">Username / Email</label>
           <input
@@ -51,7 +46,6 @@ export default function Login() {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
@@ -62,7 +56,6 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-
         <button type="submit" disabled={loading} className="login-btn">
           {loading ? 'Signing in...' : 'Sign In'}
         </button>

@@ -4,13 +4,11 @@ import { useCartStore } from '../store/cartStore';
 
 export default function NavBar({ theme, onToggleTheme }) {
   const { user, logoutUser } = useAuth();
-
-  // Selector returns primitive number of items to prevent re-renders on unrelated cart changes
-  const cartItemCount = useCartStore((state) =>
+  const cartItemCount = useCartStore((state) => //Selector returns primitive number of items to prevent re-renders on unrelated cart changes
     state.items.reduce((total, item) => total + item.quantity, 0)
   );
 
-  return (
+  return ( //main navigation bar component with links to home,products,cart and login/log out functionality
     <nav className="navbar">
       <div className="nav-brand">
         <NavLink to="/">MyStore</NavLink>
