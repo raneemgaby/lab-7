@@ -57,9 +57,7 @@ export const useCartStore = create((set) => ({
 
   clear: () => set({ items: [] }),
 }));
-
-// Save cart changes to localStorage outside React component lifecycle
-useCartStore.subscribe((state) => {
+useCartStore.subscribe((state) => {   //Save cart changes to localStorage outside React component lifecycle
   try {
     localStorage.setItem('cart_items', JSON.stringify(state.items));
   } catch (error) {
