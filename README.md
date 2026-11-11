@@ -1,5 +1,6 @@
 ## File organization:first implemented the api folder files (prodcutsApi.js & autApi.js) since These files establish the core network and authentication methods,then the components files such as (ProductCard.jsx & NavBar.jsx & Layout.jsx & ProtectedRoute.jsx) ,then page folder files which are (Home.jsx & ProductList.jsx & ProductDetail.jsx & Cart.jsx & Login.jsx & NotFound.jsx) ,eventually implemented App.jsx and main.jsx because with all pages and layout components fully created, wires up client-side navigation using React Router v6 inside,defining public routes,nested layouts,and guards.mounts to the DOM.
 ## Challenges getting used to useContext sintax and how to use ReactRouter to handle client-side routing and turn a single-view app into a multi-page structure,and to resolve the dependencies between the files spread across different folders.
+
 ## Reasoning Questions Answers:
 Q1: Where does each piece of state live, and why?
 User Sign-In (): Lives in React Context because logging in or out happens rarely, and almost every page or navigation bar needs to know if a user is signed in.AuthContext
@@ -17,6 +18,7 @@ Q5: Is client-side route protection () actually secure?ProtectedRoute
 No! Client-side protection is just a UI convenience so regular users don't wander onto private pages. Anyone who opens browser developer tools can inspect or bypass it. Real security has to happen on the backend server by validating security tokens before sending sensitive data.
 Q6: Why does refreshing  work on Vite but break on a standard web server?/products/3
 On a basic static file server (like Apache or Nginx), the server looks for an actual file named /products/3.html. When it can't find that file, it returns a 404 Not Found error. The Vite dev server intercepts requests and redirects them back to index.html so React Router can handle the path inside the browser.
+
 ## Self-Study:
 1.Keeping Search & Category Filters in the URL at the Same Time
 What I figured out: Using  directly can accidentally wipe out your search bar text when you pick a category from the dropdown menu.setSearchParams
